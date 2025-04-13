@@ -13,23 +13,6 @@ OS1="$(lsb_release -si)"
 OS="$(lsb_release -sirc)"
 Packages="$(pacman -Q | wc -l)"
 
-
-if [ -z "${WM}" ]; then
-	if [ "${XDG_CURRENT_DESKTOP}" ]; then
-		envtype='Desktop'
-		WM="${XDG_CURRENT_DESKTOP}"
-	elif [ "${DESKTOP_SESSION}" ]; then
-		envtype='Desktop'
-		WM="${DESKTOP_SESSION}"
-	else
-		envtype='WM'
-		WM="$(tail -n 1 "${HOME}/.xinitrc" | cut -d ' ' -f 2)"
-	fi
-else
-	envtype='WM'
-
-fi
-
 # colors
 c1="\e[31m"  # Red
 c2="\e[32m"  # Light Green
