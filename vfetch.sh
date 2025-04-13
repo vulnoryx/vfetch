@@ -11,7 +11,7 @@ GPU="$(glxinfo -B | grep "OpenGL renderer string" | sed 's/.*: \([^/]*\).*/\1/')
 RAM="$(free -h | awk '/^Mem:/ {print $3 " / " $2}')"
 OS1="$(lsb_release -si)"
 OS="$(lsb_release -sirc)"
-Packages="$(pacman -Qs | wc -l)"
+Packages="$(pacman -Q | wc -l)"
 
 
 if [ -z "${WM}" ]; then
